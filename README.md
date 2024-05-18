@@ -1,7 +1,7 @@
-npm install dotenv
-npm install pg
-npm install sequelize
-npm install express
+npm install dotenv --legacy-peer-deps
+npm install pg --legacy-peer-deps
+npm install sequelize --legacy-peer-deps
+npm install express --legacy-peer-deps
 
 yarn add -D typescript ts-node-dev
 

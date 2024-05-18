@@ -1,15 +1,21 @@
 import { body, param, query } from 'express-validator';
 
-class KeyValidator {
-	checkCreateKey() {
+class PhotoValidator {
+	checkCreatePhoto() {
 		return [
 			body('id')
-				.optional()
-				.isUUID(4)
-				.withMessage('The value should be UUID v4')
+				.notEmpty()
+				.withMessage('The value should be UUID v4'),
+			body('info')
+				.notEmpty()
+				.withMessage('The info is required'),
+			body('userId')
+				.notEmpty()
+				.withMessage('The userId is required'),
 		];
 	}
-	checkReadKey() {
+
+	checkReadPhoto() {
 		return [
 			query('limit')
 				.optional()
@@ -21,15 +27,14 @@ class KeyValidator {
 				.withMessage('The value should be number'),
 		];
 	}
+
 	checkIdParam() {
 		return [
-			param('id')
+			param('userId')
 				.notEmpty()
 				.withMessage('The value should be not empty')
-				.isUUID(4)
-				.withMessage('The value should be uuid v4'),
 		];
 	}
 }
 
-export default new KeyValidator();
+export default new PhotoValidator();

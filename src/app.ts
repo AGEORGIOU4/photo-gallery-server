@@ -1,16 +1,7 @@
 import express from "express";
 const cors = require('cors');
 
-import authRouter from "./_Auth/routes/index";
-import keyRouter from "./_Keys/routes/index";
-import protocolRouter from "./_Protocols/routes/index";
-
-
-import eventRouter from "./_Events/routes/index";
-
-import userRouter from "./_User/routes/index";
-
-
+import photoRouter from "./_Photo/routes/index";
 
 const app = express();
 app.use(cors());
@@ -27,13 +18,6 @@ app.use(cors(corsOptions));
 
 app.use(express.json());
 
-app.use("/api/v1", authRouter);
-app.use("/api/v1", keyRouter);
-app.use("/api/v1", protocolRouter);
-
-
-app.use("/api/v1", eventRouter);
-
-app.use("/api/v1", userRouter);
+app.use("/api/v1", photoRouter);
 
 export default app;
