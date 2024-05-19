@@ -1,7 +1,7 @@
 import express from "express";
 const cors = require('cors');
 
-import photoRouter from "./_Photo/routes/index";
+import photoRouter from "./src/_Photo/routes/index";
 
 const app = express();
 app.use(cors());

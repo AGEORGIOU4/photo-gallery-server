@@ -1,5 +1,5 @@
 import app from "./app";
-import { checkDatabaseConnection } from "./helpers/helpers";
+import { checkDatabaseConnection } from "./src/helpers/helpers";
 
 require('dotenv').config();
 
