@@ -21,9 +21,9 @@ router.get(path +
 );
 
 router.delete(path +
-	'/delete/:id',
-	PhotoValidator.checkIdParam(),
-	Middleware.handleValidationError,
+	'/delete',
+	// PhotoValidator.checkDeleteParams(),
+	// Middleware.handleValidationError,
 	PhotoController.delete
 );
 

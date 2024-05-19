@@ -35,6 +35,17 @@ class PhotoValidator {
 				.withMessage('The value should be not empty')
 		];
 	}
+
+	checkDeleteParams() {
+		return [
+			body('id')
+				.notEmpty()
+				.withMessage('The value id is required'),
+			body('userId')
+				.notEmpty()
+				.withMessage('The value userId is required'),
+		];
+	}
 }
 
 export default new PhotoValidator();

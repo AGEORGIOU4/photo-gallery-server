@@ -59,20 +59,26 @@ class PhotoController {
 
 	async delete(req: Request, res: Response) {
 		try {
-			const { id } = req.params;
-			const record = await Photo.findOne({ where: { id } });
+			const { id, userId } = req.body;
+
+			if (!id || !userId) {
+				return res.status(400).json({ msg: "Photo ID and User ID are required" });
+			}
+
+			const record = await Photo.findOne({ where: { id: id, userId: userId } });
 
 			if (!record) {
-				return res.status(404).json({ msg: "Can not find existing record" });
+				return res.status(404).json({ msg: "Cannot find existing record or unauthorized" });
 			}
 
 			const deletedRecord = await record.destroy();
 			return res.json({ record: deletedRecord });
 		} catch (e) {
 			console.error(e);
-			return res.status(500).json({ msg: "Failed to delete", status: 500, route: "/delete/:id" });
+			return res.status(500).json({ msg: "Failed to delete", status: 500, route: "/delete" });
 		}
 	}
+
 }
 
 export default new PhotoController();
