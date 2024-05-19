@@ -4,8 +4,7 @@
    "description": "AMGEL server",
    "main": "dist/app.js",
    "scripts": {
-      "start": "node src/server.ts",
-      "start:dev": "nodemon src/server.ts",
+      "start": "nodemon src/server.ts",
       "test": "jest",
       "dev": "ts-node-dev --respawn src/server.ts"
    },
