@@ -1,7 +1,8 @@
 import express from "express";
 const cors = require('cors');
 
-import photoRouter from "./src/_Photo/routes/index";
+import photoRouter from "./_Photo/routes/index";
+import searchRouter from "./_Search/routes/index";
 
 const app = express();
 app.use(cors());
@@ -19,5 +20,6 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use("/api/v1", photoRouter);
+app.use("/api/v1", searchRouter);
 
 export default app;

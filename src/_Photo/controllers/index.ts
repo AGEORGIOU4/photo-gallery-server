@@ -1,10 +1,5 @@
 import { Request, Response } from "express";
-import { v4 as uuidv4 } from "uuid";
 import Photo from "../model/photo"; // Import the Photo model
-
-// interface CustomRequest2 extends Request {
-// 	info?: object; // Change 'json' to 'object' for TypeScript compatibility
-// }
 
 class PhotoController {
 
@@ -32,30 +27,6 @@ class PhotoController {
 			return res.status(500).json({ msg: "Failed to read photos", status: 500, route: `/read/photo` });
 		}
 	}
-
-
-	// async update(req: CustomRequest2, res: Response) {
-	// 	try {
-	// 		const { id } = req.params;
-	// 		const { info } = req.body; // Update photo info
-
-	// 		const record = await Photo.findOne({ where: { id } });
-	// 		if (!record) {
-	// 			return res.status(404).json({ msg: "Can not find existing record" });
-	// 		}
-
-	// 		if (info) {
-	// 			record.info = info;
-	// 		}
-
-	// 		await record.save();
-
-	// 		return res.json({ record });
-	// 	} catch (e) {
-	// 		console.error(e);
-	// 		return res.status(500).json({ msg: "Failed to update", status: 500, route: "/update/:id" });
-	// 	}
-	// }
 
 	async delete(req: Request, res: Response) {
 		try {

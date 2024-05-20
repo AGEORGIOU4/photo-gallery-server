@@ -4,10 +4,11 @@ WORKDIR /app
 
 COPY package*.json ./
 
+RUN yarn global add nodemon
 RUN yarn install --production
 
 COPY . .
 
 EXPOSE 9000
 
-CMD ["yarn", "start"]
+CMD ["node", "index.js"]
