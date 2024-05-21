@@ -1,14 +1,24 @@
-FROM node:18
-ENV NODE_ENV production
+# Use the official Node.js 14 image as base
+FROM node:14
+
+# Set the working directory inside the container
 WORKDIR /app
 
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-RUN yarn global add nodemon
-RUN yarn install --production
+# Install dependencies
+RUN npm install mysql2 --save \
+  && npm install dotenv --save \
+  && npm install sequelize --save \
+  && npm install express --save \
+  && npm install
 
+# Copy the rest of the application code
 COPY . .
 
-EXPOSE 9000
+# Expose port 3000 to the outside world
+EXPOSE $PORT
 
-CMD ["node", "index.js"]
+# Command to run the application
+CMD ["npm", "run", "start"]
